@@ -28,13 +28,14 @@ int main()
     omp_set_num_threads(4);
 
     srand(time(0));
-    #pragma omp parallel shared(n)
+    double start_time = omp_get_wtime();
+
+#pragma omp parallel shared(n)
     {
-        double start_time = omp_get_wtime();
-        #pragma omp single
+#pragma omp single
         printf("fib(%d) = %d\n", n, fib(n));
-        double end_time = omp_get_wtime();
-        printf("Time taken: %f seconds by thread %d\n", end_time - start_time, omp_get_thread_num());
     }
+    double end_time = omp_get_wtime();
+    printf("Time taken: %f seconds \n", end_time - start_time);
     return 0;
 }
