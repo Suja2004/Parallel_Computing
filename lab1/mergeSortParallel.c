@@ -81,7 +81,7 @@ int main()
     srand(time(0));
     for (i = 0; i < n; i++)
     {
-        arr_par[i] = arr_seq[i] = rand() * 10000;
+        arr_par[i] = arr_seq[i] = rand() % 10000;
     }
 
     printf("Sorting %d elements...\n\n", n);
